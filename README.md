@@ -1,7 +1,8 @@
 # N-Gram-Language-Model
 Note: Put the java program and the datasets under the same directory
 
-## The program takes at least 4 arguments
+## Command Line Arguments
+### Compulsory arguments
 - args[0]: the train set file name
 - args[1]: the file name containing data for which you need to make predictions
 - args[2]: the N for N-gram model
@@ -44,4 +45,8 @@ java NGramLanguageModel brown.train.txt brown.dev.txt 3 0 0.3 0.4 0.3
 ```
 java NGramLanguageModel brown.train.txt brown.dev.txt 2 3 0.3 0.7
 ```
-
+## Output
+- Original vocabulary count
+- Mapping list for Named Entity Recognition
+- Log Probability Predictions for the prediction data set
+- Print the Perplexity
