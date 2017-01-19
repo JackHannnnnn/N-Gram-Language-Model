@@ -35,10 +35,13 @@ java NGramLanguageModel brown.train.txt brown.dev.txt 2 0 0.3 0.7
 ```
 
 - Trigram model with parameters (lambda 1: 0.3, lambda 2: 0.4, lambda 3: 0.3)
-```java NGramLanguageModel brown.train.txt brown.dev.txt 3 0 0.3 0.4 0.3
+```
+java NGramLanguageModel brown.train.txt brown.dev.txt 3 0 0.3 0.4 0.3
 ```
 
 ### Add-k smoothing and Linear Interpolation 
 - Bigram model with parameters (K: 3, lambda 1: 0.3, lambda 2: 0.7)
-```java NGramLanguageModel brown.train.txt brown.dev.txt 2 3 0.3 0.7```
+```
+java NGramLanguageModel brown.train.txt brown.dev.txt 2 3 0.3 0.7
+```
 
