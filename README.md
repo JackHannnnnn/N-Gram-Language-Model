@@ -15,6 +15,7 @@ Note: Put the java program and the datasets under the same directory
 ## Train the model 
 ### Without any smoothing
 - Unigram model
+
 ```java NGramLanguageModel brown.train.txt brown.dev.txt 1 0
 ```
 
@@ -22,6 +23,7 @@ Note: Put the java program and the datasets under the same directory
 ```
 java NGramLanguageModel brown.train.txt brown.dev.txt 3 0
 ```
+
 
 ### Add-K smoothing
 - Unigram model with add-2 smoothing
