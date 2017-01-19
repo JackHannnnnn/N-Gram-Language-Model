@@ -1,0 +1,43 @@
+Design choices:
+•	Static nested class WordsKey:
+o	an String[] instance variable indicating the words appearing in a sentence
+o	arr[0] appears first and arr[size-1] appears last
+•	Instance variables:
+o	private int n;
+♣	n-gram
+o	private int KSmoothing;
+♣	add-K smoothing
+o	private double[] linearInterpoParams = null;
+♣	parameters of Linear Interpolation
+o	private int lowFrequencyThreshold;
+♣	low frequency threshold for Named Entity Recogtion
+o	private int unkThreshold;
+♣	frequency threshold for converting words into UNK
+o	private Map<WordsKey, Long>[] countContainer;
+♣	the count of a certain WordsKey in the training set
+♣	length of this array is n-gram
+o	private Map<WordsKey, Double>[] modelParams;
+♣	parameters of a n-gram model
+♣	arr[ngram-1] is the one used for making predictions
+♣	length of this array is n-gram
+o	private TreeSet<String> vocabulary;
+♣	final vocabulary of this model
+o	private Map<String, String> mappingList;
+♣	a mapping from low-frequency named entity to categories
+•	train() method:
+o	traverse the whole training set once and update counts for countContainer[]
+♣	Include <START> and <STOP> 
+o	do the named entity recognition
+♣	update conuntContainer[0] based on the lowFrequencyThreshold
+♣	create a mappingList
+o	convert words into UNK based on the unkThreshold
+♣	Update countContainer[0] and create the final vocabulary
+♣	update the remaining countContainer[j] based on mappingList and vocabulary
+o	Estimate the parameters using Maximum Likelihood Estimate
+o	If there is Linear Interpolation, update modelParams[ngram-1]
+•	predict() method:
+o	create a WordsKey when traversing the document and get the parameter
+♣	add <START> if necessary for the lookup in the countContainer[]
+o	If there doesn’t exist that parameter, make an estimate based on MLE
+•	evaluate() method:
+o	output the perplexity given a list of log predictions
