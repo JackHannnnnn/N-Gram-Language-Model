@@ -213,20 +213,17 @@ public class NGramLanguageModel {
 		WordsKey unk = new WordsKey(new String[] { "<UNK>" });
 		update.put(unk, 0l);
 		vocabulary.add("<UNK>");
-		int count = 0;
 		while (iterator.hasNext()) {
 			Map.Entry<WordsKey, Long> each = iterator.next();
 			if (each.getValue() <= unkThreshold) {
 				update.put(unk, each.getValue() + update.get(unk));
 				wordsConverted.add(each.getKey().getWords()[0]);
 				iterator.remove();
-				count++;
 			} else {
 				vocabulary.add(each.getKey().getWords()[0]);
 			}
 		}
 		countContainer[0].putAll(update);
-		System.out.println(String.format("%d words have been identified as Named Entity!", count));
 		
 		
 		for (int j = 1; j < n; j++) {
